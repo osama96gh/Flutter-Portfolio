@@ -9,8 +9,8 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final scrollProvider = Provider.of<ScrollProvider>(context);
 
-    return ListView.builder(
-      controller: scrollProvider.controller,
+    return ScrollablePositionedList.builder(
+      itemScrollController: scrollProvider.controller,
       itemCount: BodyUtils.views.length,
       itemBuilder: (context, index) => BodyUtils.views[index],
     );

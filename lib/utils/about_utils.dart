@@ -1,7 +1,10 @@
 class AboutUtils {
   static const String aboutMeHeadline =
-      'I\'m Muhammad Hamza, a Flutter developer, Technical blog writer and UI designer.';
+      'Mid-level Mobile application developer with 3+ years of experience.';
 
-  static const String aboutMeDetail =
-      'I\'m a Fresh Graduate with Computer Science as Majors from COMSATS University, Islamabad. I have been developing mobile apps for over 2 years now. I have worked in teams for various startups and helped them in launching their prototypes and got valuable learning experience. Been a former  Google Developer Student Clubs (DSC) lead and also CEO/Co-Founder Flutter Islamabad, Pakistan. Currently working as Associate Software Engineer at Sastaticket.pk';
+  static const List<String> aboutMeDetail = [
+    "Worked with Flutter and Dart to Build cross platforms mobile applications (Android - IOS) for 2+ years",
+    "Worked with Java to Build native android applications for 1+ year.",
+    "Focused on building scalable and beautiful applications, with robust architecture and refined layout"
+  ];
 }

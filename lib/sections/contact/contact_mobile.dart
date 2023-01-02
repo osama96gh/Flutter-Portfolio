@@ -5,6 +5,8 @@ import 'package:folio/utils/contact_utils.dart';
 import 'package:folio/widget/custom_text_heading.dart';
 import 'package:folio/widget/project_card.dart';
 
+import '../../configs/space.dart';
+
 class ContactMobileTab extends StatelessWidget {
   const ContactMobileTab({Key? key}) : super(key: key);
 
@@ -12,12 +14,15 @@ class ContactMobileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Space.y2!,
+
         const CustomSectionHeading(
-          text: "\nGet in Touch",
+          text: "Get in Touch",
         ),
         const CustomSectionSubHeading(
-          text: "Let's build something together :)\n\n",
+          text: "Let's build something together",
         ),
+        Space.y2!,
         CarouselSlider.builder(
           itemCount: 3,
           itemBuilder: (BuildContext context, int itemIndex, int i) => Padding(

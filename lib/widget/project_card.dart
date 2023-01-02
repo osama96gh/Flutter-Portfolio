@@ -5,9 +5,12 @@ import 'package:folio/provider/app_provider.dart';
 
 import 'package:provider/provider.dart';
 
+import '../sections/portfolio/link_widget.dart';
+import '../utils/project_utils.dart';
+
 class ProjectCard extends StatefulWidget {
   final String? banner;
-  final String? projectLink;
+  final Map<LinkType, String>? projectLink;
   final String? projectIcon;
   final String projectTitle;
   final String projectDescription;
@@ -22,6 +25,7 @@ class ProjectCard extends StatefulWidget {
     required this.projectTitle,
     required this.projectDescription,
   }) : super(key: key);
+
   @override
   ProjectCardState createState() => ProjectCardState();
 }
@@ -36,25 +40,26 @@ class ProjectCardState extends State<ProjectCard> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return InkWell(
-      hoverColor: Colors.transparent,
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      onTap: widget.projectLink == null
-          ? () {}
-          : () => openURL(
-                widget.projectLink!,
-              ),
-      onHover: (isHovering) {
-        if (isHovering) {
-          setState(() {
-            isHover = true;
-          });
-        } else {
-          setState(() {
-            isHover = false;
-          });
-        }
+    return MouseRegion(
+      // hoverColor: Colors.transparent,
+      // splashColor: Colors.transparent,
+      // highlightColor: Colors.transparent,
+      // onTap: widget.projectLink == null
+      //     ? () {}
+      //     : () => openURL(
+      //           widget.projectLink!,
+      //         ),
+      opaque: false,
+
+      onEnter: (e) {
+        setState(() {
+          isHover = true;
+        });
+      },
+      onExit: (e) {
+        setState(() {
+          isHover = false;
+        });
       },
       child: Container(
         margin: Space.h,
@@ -81,35 +86,40 @@ class ProjectCardState extends State<ProjectCard> {
                 ],
         ),
         child: Stack(
-          fit: StackFit.expand,
+          fit: StackFit.passthrough,
           children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+
                 widget.projectIcon != null
-                    ? (width > 1135 || width < 950)
-                        ? Image.asset(
+                    ?
+                    // ? (width > 1135 || width < 950)
+                    //     ? Image.asset(
+                    //         widget.projectIcon!,
+                    //         height: height * 0.05,
+                    //       )
+                    Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Image.asset(
                             widget.projectIcon!,
                             height: height * 0.05,
-                          )
-                        : Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Image.asset(
-                                widget.projectIcon!,
-                                height: height * 0.03,
-                              ),
-                              SizedBox(
-                                width: width * 0.01,
-                              ),
-                              Text(
-                                widget.projectTitle,
-                                style: AppText.b2b,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          )
-                    : Container(),
+                          ),
+                          SizedBox(
+                            width: width * 0.01,
+                          ),
+                          Expanded(
+                            child: Text(
+                              widget.projectTitle,
+                              style: AppText.b2b,
+                              textAlign: TextAlign.start,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      )
+                    : const Spacer(),
                 widget.projectIconData != null
                     ? Icon(
                         widget.projectIconData,
@@ -117,42 +127,66 @@ class ProjectCardState extends State<ProjectCard> {
                         size: height * 0.1,
                       )
                     : Container(),
-                (width > 1135 || width < 950)
-                    ? SizedBox(
-                        height: height * 0.02,
-                      )
-                    : const SizedBox(),
-                (width > 1135 || width < 950)
-                    ? Text(
-                        widget.projectTitle,
-                        style: AppText.b2b,
-                        textAlign: TextAlign.center,
-                      )
-                    : Container(),
+                // (width > 1135 || width < 950)
+                //     ? SizedBox(
+                //         height: height * 0.02,
+                //       )
+                //     : const SizedBox(),
+                // (width > 1135 || width < 950)
+                //     ? Text(
+                //         widget.projectTitle,
+                //         style: AppText.b2b,
+                //         textAlign: TextAlign.center,
+                //       )
+                //     : Container(),
                 SizedBox(
                   height: height * 0.01,
                 ),
                 Text(
                   widget.projectDescription,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.start,
+                  maxLines: 6,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(
                   height: height * 0.01,
                 ),
+                const Spacer(),
+
+                if (widget.projectLink != null)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: widget.projectLink!.keys
+                        .map(
+                          (e) => Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 4.0, vertical: 2),
+                            child: LinkWidget(
+                              url: widget.projectLink![e]!,
+                              linkType: e,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
               ],
             ),
-            AnimatedOpacity(
-              duration: const Duration(milliseconds: 400),
-              opacity: isHover ? 0.0 : 1.0,
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: widget.banner != null
-                    ? Image.asset(
-                        widget.banner!,
-                      )
-                    : Container(),
+            if (widget.banner != null)
+              IgnorePointer(
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 400),
+                  opacity: isHover ? 0.0 : 1.0,
+                  child: Container(
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(          borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Image.asset(
+                      widget.banner!,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
-            ),
           ],
         ),
       ),

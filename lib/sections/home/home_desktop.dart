@@ -6,6 +6,8 @@ import 'package:folio/configs/configs.dart';
 import 'package:folio/utils/utils.dart';
 import 'package:folio/widget/social_links.dart';
 
+import '../../utils/core_utils.dart';
+
 class HomeDesktop extends StatelessWidget {
   const HomeDesktop({Key? key}) : super(key: key);
 
@@ -50,7 +52,7 @@ class HomeDesktop extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'WELCOME TO MY PORTFOLIO! ',
+                      CoreUtils.welcome,
                       style: AppText.b1!.copyWith(
                         fontFamily: 'Montserrat',
                       ),
@@ -64,11 +66,17 @@ class HomeDesktop extends StatelessWidget {
                         height: AppDimensions.normalize(12),
                       ),
                     ),
+                    Text(
+                      " I'm:",
+                      style: AppText.b1!.copyWith(
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
                   ],
                 ),
                 Space.y1!,
                 Text(
-                  "Muhammad",
+                  CoreUtils.firstName,
                   style: AppText.h1!.copyWith(
                     fontFamily: 'Montserrat',
                     fontSize: AppDimensions.normalize(25),
@@ -76,7 +84,7 @@ class HomeDesktop extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Hamza",
+                  CoreUtils.lastName,
                   style: AppText.h1b!.copyWith(
                     fontSize: AppDimensions.normalize(25),
                     height: 1,
@@ -92,24 +100,18 @@ class HomeDesktop extends StatelessWidget {
                         Icons.play_arrow_rounded,
                         color: AppTheme.c!.primary!,
                       ),
+                      const SizedBox(width: 10,),
+
                       AnimatedTextKit(
-                        animatedTexts: [
-                          TyperAnimatedText(
-                            ' Flutter Developer',
+                        animatedTexts: CoreUtils.textSlider
+                            .map(
+                              (text) => TyperAnimatedText(
+                            text,
                             speed: const Duration(milliseconds: 50),
                             textStyle: AppText.b1,
                           ),
-                          TyperAnimatedText(
-                            ' UI/UX Enthusiast',
-                            speed: const Duration(milliseconds: 50),
-                            textStyle: AppText.b1,
-                          ),
-                          TyperAnimatedText(
-                            ' A friend :)',
-                            speed: const Duration(milliseconds: 50),
-                            textStyle: AppText.b1,
-                          ),
-                        ],
+                        )
+                            .toList(),
                         isRepeatingAnimation: true,
                       ),
                     ],

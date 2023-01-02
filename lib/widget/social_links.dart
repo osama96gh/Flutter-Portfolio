@@ -26,10 +26,10 @@ class SocialLinks extends StatelessWidget {
               child: IconButton(
                 highlightColor: Colors.white54,
                 splashRadius: AppDimensions.normalize(12),
-                icon: Image.network(
+                icon: Icon(
                   e.value,
                   color: appProvider.isDark ? Colors.white : Colors.black,
-                  height: Responsive.isMobile(context)
+                  size: Responsive.isMobile(context)
                       ? AppDimensions.normalize(10)
                       : null,
                 ),

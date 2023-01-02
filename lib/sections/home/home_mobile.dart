@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:folio/configs/configs.dart';
+import 'package:folio/utils/core_utils.dart';
 
 import 'package:folio/utils/utils.dart';
 import 'package:folio/widget/social_links.dart';
@@ -41,7 +42,7 @@ class HomeMobile extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "HEY THERE! ",
+                      CoreUtils.welcome,
                       style: AppText.b2!.copyWith(
                         fontFamily: 'Montserrat',
                       ),
@@ -51,18 +52,24 @@ class HomeMobile extends StatelessWidget {
                       StaticUtils.hi,
                       height: AppDimensions.normalize(10),
                     ),
+                    Text(
+                      " I'm:",
+                      style: AppText.b2!.copyWith(
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
                   ],
                 ),
                 Space.y!,
                 Text(
-                  "Muhammad",
+                  CoreUtils.firstName,
                   style: AppText.h3!.copyWith(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.w100,
                   ),
                 ),
                 Text(
-                  "Hamza",
+                  CoreUtils.lastName,
                   style: AppText.h3b!.copyWith(
                     height: 1,
                   ),
@@ -74,25 +81,18 @@ class HomeMobile extends StatelessWidget {
                       Icons.play_arrow_rounded,
                       color: AppTheme.c!.primary!,
                     ),
+                    const SizedBox(width: 10,),
+
                     AnimatedTextKit(
-                      animatedTexts: [
-                        TyperAnimatedText(
-                          ' Flutter Developer',
+                      animatedTexts: CoreUtils.textSlider
+                          .map(
+                            (text) => TyperAnimatedText(
+                          text,
                           speed: const Duration(milliseconds: 50),
                           textStyle: AppText.b1,
                         ),
-                        TyperAnimatedText(
-                          ' UI/UX Enthusiast',
-                          speed: const Duration(milliseconds: 50),
-                          textStyle: AppText.b1,
-                        ),
-                        TyperAnimatedText(
-                          ' A friend :)',
-                          speed: const Duration(milliseconds: 50),
-                          textStyle: AppText.b1,
-                        ),
-                      ],
-                      repeatForever: true,
+                      )
+                          .toList(),
                       isRepeatingAnimation: true,
                     ),
                   ],

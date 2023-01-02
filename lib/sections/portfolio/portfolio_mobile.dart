@@ -15,12 +15,16 @@ class PortfolioMobileTab extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Column(
       children: [
+        Space.y2!,
+
         const CustomSectionHeading(
-          text: "\nPortfolio",
+          text: "Projects",
         ),
         const CustomSectionSubHeading(
-          text: "Here are few samples of my previous work :)\n\n",
+          text: "Here are few samples of my previous work",
         ),
+        Space.y2!,
+
         CarouselSlider.builder(
           itemCount: ProjectUtils.titles.length,
           itemBuilder: (BuildContext context, int itemIndex, int i) => Padding(

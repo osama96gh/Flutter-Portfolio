@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:folio/animations/entrance_fader.dart';
 import 'package:folio/configs/configs.dart';
+import 'package:folio/utils/core_utils.dart';
 import 'package:folio/utils/utils.dart';
 
 import 'package:folio/widget/social_links.dart';
@@ -49,7 +50,7 @@ class HomeTab extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'WELCOME TO MY PORTFOLIO! ',
+                      CoreUtils.welcome,
                       style: AppText.b2!.copyWith(
                         fontFamily: 'Montserrat',
                       ),
@@ -63,18 +64,24 @@ class HomeTab extends StatelessWidget {
                         height: AppDimensions.normalize(12),
                       ),
                     ),
+                    Text(
+                      " I'm:",
+                      style: AppText.b2!.copyWith(
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
                   ],
                 ),
                 Space.y1!,
                 Text(
-                  "Muhammad",
+                  CoreUtils.firstName,
                   style: AppText.h1!.copyWith(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.w100,
                   ),
                 ),
                 Text(
-                  "Hamza",
+                  CoreUtils.lastName,
                   style: AppText.h1b!.copyWith(
                     height: 1,
                   ),
@@ -89,24 +96,17 @@ class HomeTab extends StatelessWidget {
                         Icons.play_arrow_rounded,
                         color: AppTheme.c!.primary!,
                       ),
+                      const SizedBox(width: 10,),
                       AnimatedTextKit(
-                        animatedTexts: [
-                          TyperAnimatedText(
-                            ' Flutter Developer',
-                            speed: const Duration(milliseconds: 50),
-                            textStyle: AppText.b1,
-                          ),
-                          TyperAnimatedText(
-                            ' UI/UX Enthusiast',
-                            speed: const Duration(milliseconds: 50),
-                            textStyle: AppText.b1,
-                          ),
-                          TyperAnimatedText(
-                            ' A friend :)',
-                            speed: const Duration(milliseconds: 50),
-                            textStyle: AppText.b1,
-                          ),
-                        ],
+                        animatedTexts: CoreUtils.textSlider
+                            .map(
+                              (text) => TyperAnimatedText(
+                                text,
+                                speed: const Duration(milliseconds: 50),
+                                textStyle: AppText.b1,
+                              ),
+                            )
+                            .toList(),
                         isRepeatingAnimation: true,
                       ),
                     ],

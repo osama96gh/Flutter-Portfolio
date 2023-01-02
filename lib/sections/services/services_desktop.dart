@@ -16,16 +16,20 @@ class ServiceDesktopState extends State<ServiceDesktop> {
     double width = MediaQuery.of(context).size.width;
 
     return Container(
-      padding: Space.hf(4),
+       padding: Space.hf(4),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
+
         children: [
+          Space.y2!,
+
           const CustomSectionHeading(
-            text: '\nWhat I can do?',
+            text: 'My Skills',
           ),
           const CustomSectionSubHeading(
-            text: 'I may not be perfect but surely I\'m of some use :)\n\n',
+            text: 'What I can do?',
           ),
-          Space.y!,
+          Space.y2!,
           Wrap(
             spacing: width * 0.05,
             runSpacing: height * 0.05,
@@ -43,7 +47,9 @@ class ServiceDesktopState extends State<ServiceDesktop> {
                   ),
                 )
                 .toList(),
-          )
+          ),
+          Space.y2!,
+
         ],
       ),
     );

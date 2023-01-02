@@ -9,10 +9,10 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Responsive(
-      tablet: AboutTab(),
-      mobile: AboutMobile(),
-      desktop: AboutDesktop(),
+     return const Responsive(
+      tablet: Padding(padding: EdgeInsets.symmetric(horizontal: 20),child: AboutDesktop(),),
+      mobile:Padding(padding: EdgeInsets.symmetric(horizontal: 8),child: AboutDesktop(),),
+      desktop: Padding(padding: EdgeInsets.symmetric(horizontal: 40),child: AboutDesktop(),),
     );
   }
 }

@@ -16,29 +16,11 @@ class _MobileDrawer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Center(
-                child: NavBarLogo(),
-              ),
-              const Divider(),
-              ListTile(
-                leading: Icon(
-                  Icons.light_mode,
-                  color: AppTheme.c!.primary!,
-                ),
-                title: const Text(
-                  "Dark Mode",
-                ),
-                trailing: Switch(
-                  inactiveTrackColor: Colors.grey,
-                  value: appProvider.isDark,
-                  onChanged: (value) {
-                    appProvider
-                        .setTheme(value ? ThemeMode.dark : ThemeMode.light);
-                  },
-                  activeColor: AppTheme.c!.primary,
-                ),
-              ),
-              const Divider(),
+              // const Center(
+              //   child: NavBarLogo(),
+              // ),
+              //
+              // const Divider(),
               ...NavBarUtils.names.asMap().entries.map(
                     (e) => Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -61,23 +43,20 @@ class _MobileDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MaterialButton(
-                  hoverColor: AppTheme.c!.primary!.withAlpha(150),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                      side: BorderSide(color: AppTheme.c!.primary!)),
-                  onPressed: () => openURL(StaticUtils.resume),
-                  child: const ListTile(
-                    leading: Icon(
-                      Icons.book,
-                      color: Colors.red,
-                    ),
-                    title: Text(
-                      'RESUME',
-                    ),
-                  ),
+
+              const Spacer(),
+              const Divider(),
+
+              ListTile(
+                title: const Text(
+                  "View Mode",
+                ),
+                trailing: DarkLightSwitch(
+                  isDark: appProvider.isDark,
+                  onChange: (value) {
+                    appProvider
+                        .setTheme(value ? ThemeMode.dark : ThemeMode.light);
+                  },
                 ),
               ),
             ],

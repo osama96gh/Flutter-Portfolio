@@ -20,12 +20,17 @@ class _PortfolioDesktopState extends State<PortfolioDesktop> {
       padding: Space.h!,
       child: Column(
         children: [
+          Space.y2!,
+
           const CustomSectionHeading(
-            text: "\nPortfolio",
+            text: "Projects",
           ),
           const CustomSectionSubHeading(
-            text: "Here are few samples of my previous work :)\n\n",
+            text: "Here are few samples of my previous work",
           ),
+
+          Space.y2!,
+
           Wrap(
             alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
