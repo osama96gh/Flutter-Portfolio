@@ -9,22 +9,9 @@ import '../sections/portfolio/link_widget.dart';
 import '../utils/project_utils.dart';
 
 class ProjectCard extends StatefulWidget {
-  final String? banner;
-  final Map<LinkType, String>? projectLink;
-  final String? projectIcon;
-  final String projectTitle;
-  final String projectDescription;
-  final IconData? projectIconData;
+  final ProjectInfo projectInfo;
 
-  const ProjectCard({
-    Key? key,
-    this.banner,
-    this.projectIcon,
-    this.projectLink,
-    this.projectIconData,
-    required this.projectTitle,
-    required this.projectDescription,
-  }) : super(key: key);
+  const ProjectCard({Key? key, required this.projectInfo}) : super(key: key);
 
   @override
   ProjectCardState createState() => ProjectCardState();
@@ -41,16 +28,7 @@ class ProjectCardState extends State<ProjectCard> {
     double height = MediaQuery.of(context).size.height;
 
     return MouseRegion(
-      // hoverColor: Colors.transparent,
-      // splashColor: Colors.transparent,
-      // highlightColor: Colors.transparent,
-      // onTap: widget.projectLink == null
-      //     ? () {}
-      //     : () => openURL(
-      //           widget.projectLink!,
-      //         ),
       opaque: false,
-
       onEnter: (e) {
         setState(() {
           isHover = true;
@@ -91,19 +69,11 @@ class ProjectCardState extends State<ProjectCard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-
-                widget.projectIcon != null
-                    ?
-                    // ? (width > 1135 || width < 950)
-                    //     ? Image.asset(
-                    //         widget.projectIcon!,
-                    //         height: height * 0.05,
-                    //       )
                     Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Image.asset(
-                            widget.projectIcon!,
+                            widget.projectInfo.iconPath,
                             height: height * 0.05,
                           ),
                           SizedBox(
@@ -111,39 +81,19 @@ class ProjectCardState extends State<ProjectCard> {
                           ),
                           Expanded(
                             child: Text(
-                              widget.projectTitle,
+                              widget.projectInfo.title,
                               style: AppText.b2b,
                               textAlign: TextAlign.start,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],
-                      )
-                    : const Spacer(),
-                widget.projectIconData != null
-                    ? Icon(
-                        widget.projectIconData,
-                        color: AppTheme.c!.primary!,
-                        size: height * 0.1,
-                      )
-                    : Container(),
-                // (width > 1135 || width < 950)
-                //     ? SizedBox(
-                //         height: height * 0.02,
-                //       )
-                //     : const SizedBox(),
-                // (width > 1135 || width < 950)
-                //     ? Text(
-                //         widget.projectTitle,
-                //         style: AppText.b2b,
-                //         textAlign: TextAlign.center,
-                //       )
-                //     : Container(),
+                      ),
                 SizedBox(
                   height: height * 0.01,
                 ),
                 Text(
-                  widget.projectDescription,
+                  widget.projectInfo.description,
                   textAlign: TextAlign.start,
                   maxLines: 6,
                   overflow: TextOverflow.ellipsis,
@@ -153,16 +103,15 @@ class ProjectCardState extends State<ProjectCard> {
                 ),
                 const Spacer(),
 
-                if (widget.projectLink != null)
-                  Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: widget.projectLink!.keys
+                    children: widget.projectInfo.links.keys
                         .map(
                           (e) => Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 4.0, vertical: 2),
                             child: LinkWidget(
-                              url: widget.projectLink![e]!,
+                              url: widget.projectInfo.links[e]!,
                               linkType: e,
                             ),
                           ),
@@ -171,17 +120,17 @@ class ProjectCardState extends State<ProjectCard> {
                   ),
               ],
             ),
-            if (widget.banner != null)
-              IgnorePointer(
+               IgnorePointer(
                 child: AnimatedOpacity(
                   duration: const Duration(milliseconds: 400),
                   opacity: isHover ? 0.0 : 1.0,
                   child: Container(
                     clipBehavior: Clip.hardEdge,
-                    decoration: BoxDecoration(          borderRadius: BorderRadius.circular(6),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
                     ),
                     child: Image.asset(
-                      widget.banner!,
+                      widget.projectInfo.bannerPath,
                       fit: BoxFit.cover,
                     ),
                   ),

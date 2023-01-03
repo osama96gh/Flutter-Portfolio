@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:folio/animations/bottom_animation.dart';
 import 'package:folio/configs/configs.dart';
 import 'package:folio/utils/contact_utils.dart';
+import 'package:folio/widget/contact_card.dart';
 import 'package:folio/widget/custom_text_heading.dart';
 import 'package:folio/widget/project_card.dart';
 
@@ -26,14 +27,10 @@ class ContactDesktop extends StatelessWidget {
           Wrap(
               alignment: WrapAlignment.center,
               runSpacing: AppDimensions.normalize(10),
-              children: ContactUtils.contactIcon
-                  .asMap()
-                  .entries
-                  .map((e) => WidgetAnimator(
-                        child: ProjectCard(
-                          projectIconData: e.value,
-                          projectTitle: ContactUtils.titles[e.key],
-                          projectDescription: ContactUtils.details[e.key],
+              children: ContactUtils.contacts
+                   .map((e) => WidgetAnimator(
+                        child: ContactCard(
+                          contactInfo: e,
                         ),
                       ))
                   .toList()),

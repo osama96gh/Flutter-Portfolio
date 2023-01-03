@@ -21,32 +21,19 @@ class _PortfolioDesktopState extends State<PortfolioDesktop> {
       child: Column(
         children: [
           Space.y2!,
-
           const CustomSectionHeading(
             text: "Projects",
           ),
           const CustomSectionSubHeading(
             text: "Here are few samples of my previous work",
           ),
-
           Space.y2!,
-
           Wrap(
             alignment: WrapAlignment.center,
             crossAxisAlignment: WrapCrossAlignment.center,
             runSpacing: AppDimensions.normalize(10),
-            children: ProjectUtils.banners
-                .asMap()
-                .entries
-                .map(
-                  (e) => ProjectCard(
-                    banner: e.value,
-                    projectIcon: ProjectUtils.icons[e.key],
-                    projectLink: ProjectUtils.links[e.key],
-                    projectTitle: ProjectUtils.titles[e.key],
-                    projectDescription: ProjectUtils.description[e.key],
-                  ),
-                )
+            children: ProjectUtils.bigProjects
+                .map((e) => ProjectCard(projectInfo: e))
                 .toList(),
           ),
           Space.y2!,

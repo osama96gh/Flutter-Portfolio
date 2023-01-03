@@ -26,14 +26,11 @@ class PortfolioMobileTab extends StatelessWidget {
         Space.y2!,
 
         CarouselSlider.builder(
-          itemCount: ProjectUtils.titles.length,
+          itemCount: ProjectUtils.bigProjects.length,
           itemBuilder: (BuildContext context, int itemIndex, int i) => Padding(
             padding: const EdgeInsets.symmetric(vertical: 15.0),
             child: ProjectCard(
-              projectIcon: ProjectUtils.icons[i],
-              projectLink: ProjectUtils.links[i],
-              projectTitle: ProjectUtils.titles[i],
-              projectDescription: ProjectUtils.description[i],
+              projectInfo: ProjectUtils.bigProjects[i],
             ),
           ),
           options: CarouselOptions(

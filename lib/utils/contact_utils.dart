@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 
+class ContactInfo {
+  final IconData icon;
+  final String title;
+  final String details;
+
+  const ContactInfo(
+      {required this.icon, required this.title, required this.details});
+}
+
 class ContactUtils {
-  static const List<IconData> contactIcon = [
-    Icons.home,
-    Icons.phone,
-    Icons.mail,
+  static const List<ContactInfo> contacts = [
+    ContactInfo(
+      icon: Icons.home,
+      title: "Location",
+      details: "Damascus, Syria",
+    ),
+    ContactInfo(
+      icon: Icons.phone,
+      title: "Phone",
+      details: "(+963) 934565755",
+    ),
+    ContactInfo(
+      icon: Icons.mail,
+      title: "Email",
+      details: "osama.ghazal.1996@gmail.com",
+    ),
   ];
 
-  static const List<String> titles = [
-    "Location",
-    "Phone",
-    "Email",
-  ];
-
-  static const List<String> details = [
-    "Damascus, Syria",
-    "(+963) 934565755",
-    "osama.ghazal.1996@gmail.com",
-  ];
 }
