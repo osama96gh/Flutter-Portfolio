@@ -33,7 +33,7 @@ class _PortfolioDesktopState extends State<PortfolioDesktop> {
             crossAxisAlignment: WrapCrossAlignment.center,
             runSpacing: AppDimensions.normalize(10),
             children: ProjectUtils.bigProjects
-                .map((e) => ProjectCard(projectInfo: e))
+                .map((e) => ProjectCard(projectInfo: e,showBanner: true,))
                 .toList(),
           ),
           Space.y2!,

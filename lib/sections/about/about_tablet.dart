@@ -1,15 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:folio/configs/configs.dart';
 import 'package:folio/utils/about_utils.dart';
-import 'package:folio/utils/utils.dart';
-import 'package:folio/utils/work_utils.dart';
-
 import 'package:folio/widget/custom_text_heading.dart';
-import 'package:universal_html/html.dart' as html;
-import 'package:flutter/material.dart';
-import 'package:folio/constants.dart';
-import 'package:folio/widget/about_me_data.dart';
-import 'package:folio/widget/community_button.dart';
-import 'package:folio/widget/tech_widget.dart';
 
 class AboutTab extends StatelessWidget {
   const AboutTab({Key? key}) : super(key: key);
@@ -17,11 +9,9 @@ class AboutTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
 
     return Container(
       height: MediaQuery.of(context).size.height,
-
       padding: Space.h,
       child: Center(
         child: Column(
@@ -63,8 +53,7 @@ class AboutTab extends StatelessWidget {
               height: height * 0.02,
             ),
             ...AboutUtils.aboutMeDetail.map(
-                  (e) => ListTile(
-
+              (e) => ListTile(
                 leading: Icon(
                   Icons.play_arrow_rounded,
                   color: AppTheme.c!.primary!,

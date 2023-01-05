@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:folio/configs/configs.dart';
-import 'package:folio/constants.dart';
 import 'package:folio/provider/app_provider.dart';
-
 import 'package:provider/provider.dart';
 
 import '../sections/portfolio/link_widget.dart';
@@ -10,8 +8,8 @@ import '../utils/project_utils.dart';
 
 class ProjectCard extends StatefulWidget {
   final ProjectInfo projectInfo;
-
-  const ProjectCard({Key? key, required this.projectInfo}) : super(key: key);
+final bool showBanner;
+  const ProjectCard({Key? key, required this.projectInfo,required this.showBanner}) : super(key: key);
 
   @override
   ProjectCardState createState() => ProjectCardState();
@@ -69,26 +67,26 @@ class ProjectCardState extends State<ProjectCard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                    Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Image.asset(
-                            widget.projectInfo.iconPath,
-                            height: height * 0.05,
-                          ),
-                          SizedBox(
-                            width: width * 0.01,
-                          ),
-                          Expanded(
-                            child: Text(
-                              widget.projectInfo.title,
-                              style: AppText.b2b,
-                              textAlign: TextAlign.start,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Image.asset(
+                      widget.projectInfo.iconPath,
+                      height: height * 0.05,
+                    ),
+                    SizedBox(
+                      width: width * 0.01,
+                    ),
+                    Expanded(
+                      child: Text(
+                        widget.projectInfo.title,
+                        style: AppText.b2b,
+                        textAlign: TextAlign.start,
+                        overflow: TextOverflow.ellipsis,
                       ),
+                    ),
+                  ],
+                ),
                 SizedBox(
                   height: height * 0.01,
                 ),
@@ -102,40 +100,40 @@ class ProjectCardState extends State<ProjectCard> {
                   height: height * 0.01,
                 ),
                 const Spacer(),
-
-                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: widget.projectInfo.links.keys
-                        .map(
-                          (e) => Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 4.0, vertical: 2),
-                            child: LinkWidget(
-                              url: widget.projectInfo.links[e]!,
-                              linkType: e,
-                            ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: widget.projectInfo.links.keys
+                      .map(
+                        (e) => Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 4.0, vertical: 2),
+                          child: LinkWidget(
+                            url: widget.projectInfo.links[e]!,
+                            linkType: e,
                           ),
-                        )
-                        .toList(),
-                  ),
+                        ),
+                      )
+                      .toList(),
+                ),
               ],
             ),
-               IgnorePointer(
-                child: AnimatedOpacity(
-                  duration: const Duration(milliseconds: 400),
-                  opacity: isHover ? 0.0 : 1.0,
-                  child: Container(
-                    clipBehavior: Clip.hardEdge,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Image.asset(
-                      widget.projectInfo.bannerPath,
-                      fit: BoxFit.cover,
-                    ),
+            if (widget.showBanner)
+            IgnorePointer(
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 400),
+                opacity: isHover ? 0.0 : 1.0,
+                child: Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Image.asset(
+                    widget.projectInfo.bannerPath,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
+            ),
           ],
         ),
       ),

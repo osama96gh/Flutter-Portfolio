@@ -4,7 +4,6 @@ import 'package:folio/configs/configs.dart';
 import 'package:folio/utils/contact_utils.dart';
 import 'package:folio/widget/contact_card.dart';
 import 'package:folio/widget/custom_text_heading.dart';
-import 'package:folio/widget/project_card.dart';
 
 class ContactDesktop extends StatelessWidget {
   const ContactDesktop({Key? key}) : super(key: key);
@@ -16,7 +15,6 @@ class ContactDesktop extends StatelessWidget {
       child: Column(
         children: [
           Space.y2!,
-
           const CustomSectionHeading(
             text: "Get in Touch",
           ),
@@ -28,7 +26,7 @@ class ContactDesktop extends StatelessWidget {
               alignment: WrapAlignment.center,
               runSpacing: AppDimensions.normalize(10),
               children: ContactUtils.contacts
-                   .map((e) => WidgetAnimator(
+                  .map((e) => WidgetAnimator(
                         child: ContactCard(
                           contactInfo: e,
                         ),

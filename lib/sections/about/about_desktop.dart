@@ -1,27 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:folio/configs/configs.dart';
-import 'package:folio/constants.dart';
 import 'package:folio/utils/about_utils.dart';
-
-import 'package:folio/utils/utils.dart';
-import 'package:folio/utils/work_utils.dart';
-import 'package:folio/widget/about_me_data.dart';
-import 'package:folio/widget/community_button.dart';
 import 'package:folio/widget/custom_text_heading.dart';
-import 'package:folio/widget/tech_widget.dart';
-
-import 'package:universal_html/html.dart' as html;
 
 class AboutDesktop extends StatelessWidget {
   const AboutDesktop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+     double width = MediaQuery.of(context).size.width;
 
     return Container(
-       padding: Space.h,
+      padding: Space.h,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -39,7 +29,11 @@ class AboutDesktop extends StatelessWidget {
           Center(
             child: Container(
               padding: EdgeInsets.symmetric(
-                  horizontal: width > 1000 ? 150.0 :width>500.0?70.0: 8.0),
+                  horizontal: width > 1000
+                      ? 150.0
+                      : width > 500.0
+                          ? 70.0
+                          : 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -48,7 +42,6 @@ class AboutDesktop extends StatelessWidget {
                     style: AppText.b1!.copyWith(
                       color: AppTheme.c!.primary,
                       fontSize: AppDimensions.normalize(8),
-
                     ),
                   ),
                   Space.y1!,
@@ -72,7 +65,6 @@ class AboutDesktop extends StatelessWidget {
                           style: AppText.b2!.copyWith(
                             height: 1.4,
                             wordSpacing: 1,
-
                             letterSpacing: 1,
                             fontFamily: 'Montserrat',
                             fontSize: AppDimensions.normalize(6),

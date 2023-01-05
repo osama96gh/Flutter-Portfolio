@@ -14,16 +14,30 @@ class LinkWidget extends StatelessWidget {
   Widget getIcon(LinkType linkType) {
     switch (linkType) {
       case LinkType.youtube:
-        return   const FaIcon(FontAwesomeIcons.youtube,size: 18,);
-        break;
-      case LinkType.website:
-        return const FaIcon(FontAwesomeIcons.arrowUpRightFromSquare,size: 18,);
+        return const FaIcon(
+          FontAwesomeIcons.youtube,
+          size: 18,
+        );
+       case LinkType.website:
+        return const FaIcon(
+          FontAwesomeIcons.arrowUpRightFromSquare,
+          size: 18,
+        );
       case LinkType.appleStore:
-        return Icon(FontAwesomeIcons.appStore,size: 20,);
+        return const Icon(
+          FontAwesomeIcons.appStore,
+          size: 20,
+        );
       case LinkType.googleStore:
-        return Icon(FontAwesomeIcons.googlePlay,size: 18,);
+        return const Icon(
+          FontAwesomeIcons.googlePlay,
+          size: 18,
+        );
       case LinkType.github:
-        return Icon(FontAwesomeIcons.github,size: 20,);
+        return const Icon(
+          FontAwesomeIcons.github,
+          size: 20,
+        );
     }
   }
 
@@ -40,7 +54,7 @@ class LinkWidget extends StatelessWidget {
           icon: getIcon(linkType),
           splashColor: Colors.transparent,
           color: Colors.white,
-          padding: EdgeInsets.all(4),
+          padding: const EdgeInsets.all(4),
         ));
   }
 }

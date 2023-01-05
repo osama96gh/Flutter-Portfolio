@@ -4,7 +4,6 @@ import 'package:folio/configs/app_dimensions.dart';
 import 'package:folio/utils/contact_utils.dart';
 import 'package:folio/widget/contact_card.dart';
 import 'package:folio/widget/custom_text_heading.dart';
-import 'package:folio/widget/project_card.dart';
 
 import '../../configs/space.dart';
 
@@ -16,7 +15,6 @@ class ContactMobileTab extends StatelessWidget {
     return Column(
       children: [
         Space.y2!,
-
         const CustomSectionHeading(
           text: "Get in Touch",
         ),
@@ -29,11 +27,11 @@ class ContactMobileTab extends StatelessWidget {
           itemBuilder: (BuildContext context, int itemIndex, int i) => Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: ContactCard(
-               contactInfo: ContactUtils.contacts[i],
+              contactInfo: ContactUtils.contacts[i],
             ),
           ),
           options: CarouselOptions(
-            height: AppDimensions.normalize(90),
+            height: AppDimensions.normalize(100),
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 5),
             enlargeCenterPage: true,

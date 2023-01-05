@@ -10,8 +10,7 @@ class _ServiceCardBackWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appProvider = Provider.of<AppProvider>(context);
-    return Column(
+     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
