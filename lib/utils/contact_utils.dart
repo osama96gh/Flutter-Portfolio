@@ -14,12 +14,12 @@ class ContactUtils {
     ContactInfo(
       icon: Icons.home,
       title: "Location",
-      details: "Damascus, Syria",
+      details: "Cyberjaya, Malaysia",
     ),
     ContactInfo(
       icon: Icons.phone,
       title: "Phone",
-      details: "(+963) 934565755",
+      details: "+60 19-692 9872",
     ),
     ContactInfo(
       icon: Icons.mail,

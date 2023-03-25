@@ -1,6 +1,6 @@
 class AboutUtils {
   static const String aboutMeHeadline =
-      'Mid-level Mobile application developer with 3+ years of experience.';
+      'Mid-level Mobile application developer with 4+ years of experience.';
 
   static const List<String> aboutMeDetail = [
     "Worked with Flutter and Dart to Build cross platforms mobile applications (Android - IOS) for 2+ years",
